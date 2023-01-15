@@ -3,14 +3,16 @@ import Link from 'next/link';
 import Image from 'next/image';
 import utilStyles from '../styles/utils.module.css'
 import styles from './layout.module.css'
-import { siteDetails, profileDetails } from '@/lib/content';
+import { siteDetails, profileDetails } from '../lib/content';
 
 type Layout = {
     children: React.ReactNode,
     home?: Boolean
+    blog?: Boolean
+    todo?: Boolean
 }
 
-export default function Layout({children, home}: Layout) {
+export default function Layout({children, home, blog, todo}: Layout) {
     return (
         <div className={styles.container}>
             <Head>
@@ -64,11 +66,23 @@ export default function Layout({children, home}: Layout) {
                 }
             </header>
             {children}
-            {!home ? (
-                <div className={styles.backToHome}>
-                    <Link href="/">← Back to home</Link>
-                </div>
-            ) : null}
+            {
+                home ? null : 
+                blog ? (
+                    <div className={styles.backToHome}>
+                        <Link href="/blog">← Back to blog</Link>
+                    </div>
+                ) : 
+                todo ? (
+                    <div className={styles.backToHome}>
+                        <Link href="/blog">← Back to Todo list</Link>
+                    </div>
+                ) : (
+                    <div className={styles.backToHome}>
+                        <Link href="/">← Back to home</Link>
+                    </div>
+                )
+            }
         </div>
     )
 }

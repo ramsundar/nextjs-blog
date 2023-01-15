@@ -50,6 +50,10 @@
   margin: 0px 10px;
 }
 
+.grid p {
+  text-decoration: none;
+}
+
 .card {
   padding: 1rem 1.2rem;
   border-radius: var(--border-radius);
