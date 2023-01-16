@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import {remark} from 'remark';
 import html from 'remark-html';
+import axios from 'axios';
 
 const postsDirectory = path.join(process.cwd(), 'posts')
 
@@ -74,4 +75,11 @@ export async function getPostData(id: string) {
         contentHtml,
         ...(matterResult.data as {date: string, title: string}),
     };
+}
+
+export async function getSortedTodoListData() {
+    // Instead of the file system,
+    // fetch post data from an external API endpoint
+    // const res = await fetch('http://localhost:3000/api/hello').then((result) => console.log("resulstadsfasdf", result.json().then()));
+    return await axios.get('http://localhost:3000/api/todolist')
 }

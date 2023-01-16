@@ -35,12 +35,15 @@ export default function Layout({children, home, blog, todo}: Layout) {
                     home ? (
                         <>
                             <Image
-                                priority
+                                // placeholder="blur"
+                                // blurDataURL={'/images/profile.jpg'}
+                                priority={true}
                                 src="/images/profile.jpg"
                                 className={utilStyles.borderCircle}
                                 height={144}
                                 width={144}
                                 alt=""
+                                // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                             <h1 className={utilStyles.heading2Xl}>{profileDetails.name}</h1>
                         </>
@@ -48,12 +51,15 @@ export default function Layout({children, home, blog, todo}: Layout) {
                         <>
                             <Link href="/">
                                 <Image
-                                    priority
+                                    priority={true}
+                                    // placeholder="blur"
+                                    // blurDataURL={'/images/profile.jpg'}
                                     src="/images/profile.jpg"
                                     className={utilStyles.borderCircle}
                                     height={108}
                                     width={108}
                                     alt=""
+                                    // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 />
                             </Link>
                             <h2 className={utilStyles.headingLg}>
@@ -75,7 +81,7 @@ export default function Layout({children, home, blog, todo}: Layout) {
                 ) : 
                 todo ? (
                     <div className={styles.backToHome}>
-                        <Link href="/blog">← Back to Todo list</Link>
+                        <Link href="/todo">← Back to Todo list</Link>
                     </div>
                 ) : (
                     <div className={styles.backToHome}>
